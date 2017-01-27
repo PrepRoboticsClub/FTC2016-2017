@@ -7,6 +7,7 @@ The following files were *not* copied into the new Gradle project; you
 should evaluate whether these are still needed in your project and if
 so manually move them:
 
+* .DS_Store
 * javadoc/
 * javadoc/allclasses-frame.html
 * javadoc/allclasses-noframe.html
@@ -181,6 +182,13 @@ Android Gradle projects use a different directory structure than ADT
 Eclipse projects. Here's how the projects were restructured:
 
 * AndroidManifest.xml => openCVLibrary310/src/main/AndroidManifest.xml
+* libs/arm64-v8a/libopencv_java3.so => openCVLibrary310/src/main/jniLibs/arm64-v8a/libopencv_java3.so
+* libs/armeabi-v7a/libopencv_java3.so => openCVLibrary310/src/main/jniLibs/armeabi-v7a/libopencv_java3.so
+* libs/armeabi/libopencv_java3.so => openCVLibrary310/src/main/jniLibs/armeabi/libopencv_java3.so
+* libs/mips/libopencv_java3.so => openCVLibrary310/src/main/jniLibs/mips/libopencv_java3.so
+* libs/mips64/libopencv_java3.so => openCVLibrary310/src/main/jniLibs/mips64/libopencv_java3.so
+* libs/x86/libopencv_java3.so => openCVLibrary310/src/main/jniLibs/x86/libopencv_java3.so
+* libs/x86_64/libopencv_java3.so => openCVLibrary310/src/main/jniLibs/x86_64/libopencv_java3.so
 * lint.xml => openCVLibrary310/lint.xml
 * res/ => openCVLibrary310/src/main/res/
 * src/ => openCVLibrary310/src/main/java/

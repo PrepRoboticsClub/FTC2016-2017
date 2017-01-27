@@ -32,6 +32,9 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package org.firstinspires.ftc.teamcode;
 
+import android.content.Context;
+import android.media.MediaPlayer;
+
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -65,8 +68,10 @@ public class PushbotTeleopTank_Iterative extends OpMode{
     boolean slow = false;
     boolean up = false;
     boolean down = false;
+    boolean heldDown = false;
     int time;
-                                                         // could also use HardwarePushbotMatrix class.
+
+    // could also use HardwarePushbotMatrix class.
    // double          clawOffset  = 0.0 ;                  // Servo mid position
     //final double    CLAW_SPEED  = 0.02 ;                 // sets rate to move servo
 
@@ -76,6 +81,7 @@ public class PushbotTeleopTank_Iterative extends OpMode{
      */
     @Override
     public void init() {
+
         //Vuforia
         VuforiaLocalizer.Parameters params = new VuforiaLocalizer.Parameters(R.id.cameraMonitorViewId);
         params.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
@@ -142,9 +148,13 @@ public class PushbotTeleopTank_Iterative extends OpMode{
         // Run wheels in tank mode (note: The joystick goes negative when pushed forwards, so negate it)
         left = -gamepad1.left_stick_y;
         right = -gamepad1.right_stick_y;
-        if(gamepad1.a){
+        if(gamepad1.a && !heldDown){
             slow = !slow;
+            heldDown = true;
+        }else{
+            heldDown = false;
         }
+
         if(slow) {
             robot.leftMotor.setPower(left/6);
             robot.rightMotor.setPower(right/6);

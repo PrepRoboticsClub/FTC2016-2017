@@ -241,7 +241,7 @@ public class FtcRobotControllerActivity extends Activity {
     dimmer.longBright();
 
     programmingModeController = new ProgrammingModeControllerImpl(
-        this, (TextView) findViewById(R.id.textRemoteProgrammingMode));
+            this, (TextView) findViewById(R.id.textRemoteProgrammingMode));
 
     updateUI = createUpdateUI();
     callback = createUICallback(updateUI);
@@ -402,11 +402,11 @@ public class FtcRobotControllerActivity extends Activity {
       if (cfgFileMgr.getActiveConfig().isNoConfig()) {
         // Tell the user they must configure the robot before starting programming mode.
         AppUtil.getInstance().showToast(
-            context, context.getString(R.string.toastConfigureRobotBeforeProgrammingMode));
+                context, context.getString(R.string.toastConfigureRobotBeforeProgrammingMode));
       } else {
         Intent programmingModeIntent = new Intent(ProgrammingModeActivity.launchIntent);
         programmingModeIntent.putExtra(
-            LaunchActivityConstantsList.PROGRAMMING_MODE_ACTIVITY_NETWORK_TYPE, networkType);
+                LaunchActivityConstantsList.PROGRAMMING_MODE_ACTIVITY_NETWORK_TYPE, networkType);
         startActivity(programmingModeIntent);
       }
       return true;
@@ -448,7 +448,7 @@ public class FtcRobotControllerActivity extends Activity {
       return true;
     }
 
-   return super.onOptionsItemSelected(item);
+    return super.onOptionsItemSelected(item);
   }
 
   @Override
