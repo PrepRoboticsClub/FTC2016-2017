@@ -60,11 +60,9 @@ public class AutonomousVuforia extends LinearOpMode{
     public int BEACON_ALL_BLUE = 3;
     public int BEACON_NO_BLUE = 4;
 
-    //static {
-    //    System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-    //}
     static {
-        OpenCVLoader.initDebug();
+        System.loadLibrary("native_sample");
+        System.loadLibrary("opencv_java");
     }
 
 

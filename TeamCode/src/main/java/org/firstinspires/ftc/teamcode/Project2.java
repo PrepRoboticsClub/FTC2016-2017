@@ -55,12 +55,12 @@ public class Project2
         // Define and Initialize Motors
         leftMotor   = hwMap.dcMotor.get("left_drive");
         rightMotor  = hwMap.dcMotor.get("right_drive");
-        armMotor  = hwMap.dcMotor.get("armMotor");
+        armMotor  = hwMap.dcMotor.get("arm");
         pushy = hwMap.servo.get("pushy");
         odsSensorL = hwMap.opticalDistanceSensor.get("odsSensorL");
         odsSensorR = hwMap.opticalDistanceSensor.get("odsSensorR");
         touchSensor = hwMap.touchSensor.get("touchSensor");
-        // armMotor    = hwMap.dcMotor.get("left_arm");
+        // arm    = hwMap.dcMotor.get("left_arm");
         leftMotor.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
         rightMotor.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
 
@@ -75,6 +75,8 @@ public class Project2
         leftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         armMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        leftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         // Define and initialize ALL installed servos.
         // leftClaw = hwMap.servo.get("left_hand");

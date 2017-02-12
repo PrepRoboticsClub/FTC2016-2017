@@ -64,7 +64,7 @@ public class PushbotTeleopTank_Iterative extends OpMode{
 
     /* Declare OpMode members. */
     Project2 robot       = new Project2(); // use the class created to define a Pushbot's hardware
-    VuforiaTrackables beacons;
+    //VuforiaTrackables beacons;
     boolean slow = false;
     boolean up = false;
     boolean down = false;
@@ -83,18 +83,18 @@ public class PushbotTeleopTank_Iterative extends OpMode{
     public void init() {
 
         //Vuforia
-        VuforiaLocalizer.Parameters params = new VuforiaLocalizer.Parameters(R.id.cameraMonitorViewId);
-        params.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
-        params.vuforiaLicenseKey = "AdLSetb/////AAAAGbm2rHS0ck7Fgxwjtp3Cbclm98DyEfx+PLZ+VgF6AjcoFsOoMwgjWair2KgZLmc9MwR74NxG2WqBPqWs4ocmgQ0DyEnDW0tSzgUhH/UgBobUpmHrqSY5htttuRw6OKo9/A+3t39YCQj0+qxjsIj6cg/bStC8lI11ZMYukRnCSKLQQOVGxAbe0CuL7cBQ34gc8hqxOzk1gVXyj+U9XxxjKnJ18qiCcisprtAaRuRB6xzP8MzUQoql0Ajn8ldXW3mZSKjc3tq0LPYDwYmAaKkAxNz/jabhUk3m4Gyti5ApeYtw8yWA0AkKum8Fb8W/VTnc6FckH4BXgXOcDng++FTw9vihPiSJ7a36I2hU1Q8+NnuC";
-        params.cameraMonitorFeedback = VuforiaLocalizer.Parameters.CameraMonitorFeedback.AXES;
-        VuforiaLocalizer localizer = ClassFactory.createVuforiaLocalizer(params);
-        Vuforia.setHint(HINT.HINT_MAX_SIMULTANEOUS_IMAGE_TARGETS, 4);
-        beacons = localizer.loadTrackablesFromAsset("FTC_2016-17");
+        //VuforiaLocalizer.Parameters params = new VuforiaLocalizer.Parameters(R.id.cameraMonitorViewId);
+        //params.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
+        //params.vuforiaLicenseKey = "AdLSetb/////AAAAGbm2rHS0ck7Fgxwjtp3Cbclm98DyEfx+PLZ+VgF6AjcoFsOoMwgjWair2KgZLmc9MwR74NxG2WqBPqWs4ocmgQ0DyEnDW0tSzgUhH/UgBobUpmHrqSY5htttuRw6OKo9/A+3t39YCQj0+qxjsIj6cg/bStC8lI11ZMYukRnCSKLQQOVGxAbe0CuL7cBQ34gc8hqxOzk1gVXyj+U9XxxjKnJ18qiCcisprtAaRuRB6xzP8MzUQoql0Ajn8ldXW3mZSKjc3tq0LPYDwYmAaKkAxNz/jabhUk3m4Gyti5ApeYtw8yWA0AkKum8Fb8W/VTnc6FckH4BXgXOcDng++FTw9vihPiSJ7a36I2hU1Q8+NnuC";
+        //params.cameraMonitorFeedback = VuforiaLocalizer.Parameters.CameraMonitorFeedback.AXES;
+        //VuforiaLocalizer localizer = ClassFactory.createVuforiaLocalizer(params);
+        //Vuforia.setHint(HINT.HINT_MAX_SIMULTANEOUS_IMAGE_TARGETS, 4);
+        //beacons = localizer.loadTrackablesFromAsset("FTC_2016-17");
 
-        beacons.get(0).setName("Wheels");
-        beacons.get(1).setName("Tools");
-        beacons.get(2).setName("Legos");
-        beacons.get(3).setName("Gears");
+        //beacons.get(0).setName("Wheels");
+        //beacons.get(1).setName("Tools");
+        //beacons.get(2).setName("Legos");
+        //beacons.get(3).setName("Gears");
 
         /* Initialize the hardware variables.
          * The init() method of the hardware class does all the work here
@@ -118,7 +118,7 @@ public class PushbotTeleopTank_Iterative extends OpMode{
      */
     @Override
     public void start() {
-        beacons.activate();
+        //beacons.activate();
     }
 
     /*
@@ -127,20 +127,20 @@ public class PushbotTeleopTank_Iterative extends OpMode{
     @Override
     public void loop() {
         //Vuforia
-        for(VuforiaTrackable beac: beacons) {
-            OpenGLMatrix pose = ((VuforiaTrackableDefaultListener) beac.getListener()).getPose();
+        //for(VuforiaTrackable beac: beacons) {
+        //    OpenGLMatrix pose = ((VuforiaTrackableDefaultListener) beac.getListener()).getPose();
             //The Matrix is real
-            if(pose != null){
-                VectorF translation = pose.getTranslation();
+        //    if(pose != null){
+        //        VectorF translation = pose.getTranslation();
 
-                telemetry.addData(beac.getName() + "-Translation", translation);
+        //        telemetry.addData(beac.getName() + "-Translation", translation);
 
-                double DegreesToTurn = Math.toDegrees(Math.atan2(translation.get(1), translation.get(2)));
+        //        double DegreesToTurn = Math.toDegrees(Math.atan2(translation.get(1), translation.get(2)));
 
-                telemetry.addData(beac.getName() + "-Degrees", DegreesToTurn);
-            }
-        }
-        telemetry.update();
+        //        telemetry.addData(beac.getName() + "-Degrees", DegreesToTurn);
+        //    }
+        //}
+        //telemetry.update();
 
         double left;
         double right;
@@ -156,8 +156,8 @@ public class PushbotTeleopTank_Iterative extends OpMode{
         }
 
         if(slow) {
-            robot.leftMotor.setPower(left/6);
-            robot.rightMotor.setPower(right/6);
+            robot.leftMotor.setPower(left/5);
+            robot.rightMotor.setPower(right/5);
         }else {
             robot.leftMotor.setPower(left);
             robot.rightMotor.setPower(right);
@@ -211,7 +211,7 @@ public class PushbotTeleopTank_Iterative extends OpMode{
         *   ECHO "YOU ARE RIGHT"
         * }
         * /
-        // Use gamepad left & right Bumpers to open and close the claw //TODO hack the system
+        // Use gamepad left & right Bumpers to open and close the claw
         if (gamepad1.right_bumper)
 
             clawOffset += CLAW_SPEED;
@@ -225,11 +225,11 @@ public class PushbotTeleopTank_Iterative extends OpMode{
 
         // Use gamepad buttons to move the arm up (Y) and down (A)
         if (gamepad1.y)
-            robot.armMotor.setPower(robot.ARM_UP_POWER);
+            robot.arm.setPower(robot.ARM_UP_POWER);
         else if (gamepad1.a)
-            robot.armMotor.setPower(robot.ARM_DOWN_POWER);
+            robot.arm.setPower(robot.ARM_DOWN_POWER);
         else
-            robot.armMotor.setPower(0.0);
+            robot.arm.setPower(0.0);
 
 
         // Send telemetry message to signify robot running;
